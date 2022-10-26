@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Document</title>
+  </head>
+
+  <body id="body">
+    <div class="wrapper">
+      <article class="container__calculator" id="containerCalculator">
+        <header class="container__calculator-header" id="header">
+          <p class="calculator-header__text mark">calc</p>
+          <div class="container__dark-slider">
+            <p class="calculator-header__text theme">theme</p>
+            <p class="calculator-header__text">1 2 3</p>
+            <div class="dark__slider" id="dark__slider-container">
+              <div class="dark__slider__button" id="DtarkSlider"></div>
+            </div>
+          </div>
+          <div class="container__calculator-header__input" id="display">0</div>
+        </header>
+
+        <section class="section__table" id="board">
+          <div class="section__table__primary">
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button id="del">del</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button id="sum">+</button>
+          </div>
+
+          <div class="section__table__secound">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button id="minus">-</button>
+            <button id="dot">•</button>
+            <button>0</button>
+            <button id="split">/</button>
+            <button id="multiply">x</button>
+          </div>
+          <button class="section__table__button rest" id="rest">rest</button>
+          <button class="section__table__button equal" id="equal">=</button>
+        </section>
+      </article>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>

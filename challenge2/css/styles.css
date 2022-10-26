@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@600&display=swap');
+
+:root {
+  --clr-Darkviolet: hsl(281, 89%, 26%);
+  --clr-Vividmagenta: hsl(285, 91%, 52%);
+  --clr-Purecyan: hsl(176, 100%, 44%);
+  --clr-Softcyan: hsl(177, 92%, 70%);
+  --clr-Verydarkviolet: hsl(268, 47%, 21%);
+  --clr-Darkmagenta: hsl(290, 70%, 36%);
+  --clr-Verydarkdesaturatedblue: hsl(222, 26%, 31%);
+  --clr-Verydarkdesaturated: hsl(223, 31%, 20%);
+  --clr-Verydark: hsl(224, 36%, 15%);
+  --clr-Red: hsl(6, 63%, 50%);
+  --clr-Darkred: hsl(6, 70%, 34%);
+  --clr-Lightgrayishorange: hsl(30, 25%, 89%);
+  --clr-white: hsl(0, 0%, 100%);
+  --clr-whiteOpacitiy: hsl(0, 0%, 87%);
+  --We-700: 700;
+  --font-LeagueSparta-600: 'League Spartan';
+  --clr-Lightyellow: hsl(52, 100%, 62%);
+  --clr--Verydarkblue: hsl(198, 20%, 13%);
+  --ft-size-36: 36px;
+  --ft-size-1-5rem: 1.5rem;
+  --clr-Verydarkdesaturatedbluebutton: hsl(224, 20.9%, 49.6%);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: var(--font-LeagueSparta-600);
+}
+
+body,
+.section__table__primary > button:nth-child(4),
+.rest,
+.equal {
+  margin: 0;
+}
+
+body,
+.container__calculator-header {
+  overflow: hidden;
+}
+
+body {
+  background: var(--clr-Verydarkdesaturatedblue);
+  transition: 0.5s 2s ease-out;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container__calculator {
+  width: 30%;
+  min-width: 250px;
+  color: var(--clr-white);
+}
+
+.container__calculator-header {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-bottom: 15px;
+  transition: 0.5s 2s ease-out;
+}
+
+.container__dark-slider {
+  width: 140px;
+  position: relative;
+  padding: 35px;
+}
+
+.dark__slider,
+.theme,
+.calculator-header__text:nth-child(2) {
+  position: absolute;
+}
+
+.dark__slider {
+  background: var(--clr-Verydarkdesaturated);
+  width: 60px;
+  height: 20px;
+  border-radius: 1rem;
+  right: 0;
+  bottom: 33px;
+  transition: 0.5s 1.5s ease-out;
+}
+
+.dark__slider__button {
+  width: 15px;
+  height: 15px;
+  background: var(--clr-Red);
+  border-radius: 50%;
+  margin-top: 2px;
+  margin-left: 3px;
+}
+
+.dark__slider__button,
+button {
+  cursor: pointer;
+}
+
+.calculator-header__text {
+  display: inline-block;
+}
+
+.mark {
+  margin-bottom: 0;
+  font-size: var(--ft-size-1-5rem);
+  font-size: 1.5rem;
+  margin-top: 15px;
+}
+
+.theme {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  margin-bottom: 0;
+  bottom: 36px;
+}
+
+.calculator-header__text:nth-child(2) {
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: end;
+  top: 0;
+  right: 0;
+  letter-spacing: 0.3em;
+}
+
+.container__calculator-header__input {
+  width: 100%;
+  height: 70px;
+  text-align: end;
+  padding-right: 20px;
+  border-radius: 0.5rem;
+  font-size: 2.5rem;
+  line-height: 2;
+  font-weight: 600;
+  background: var(--clr-Verydarkdesaturated);
+}
+
+.section__table {
+  background: var(--clr-Verydarkdesaturated);
+  border-radius: 0.5rem;
+  height: 335px;
+  /*transition: 0.5s 1.5s ease-out;*/
+}
+
+.section__table__primary,
+.section__table__secound {
+  padding-left: 20px;
+}
+
+.section__table__primary {
+  padding-top: 15px;
+}
+
+button {
+  background: rgb(234, 227, 219);
+  border: none;
+  outline: none;
+  padding: 12px 5px;
+  width: 45px;
+  margin-right: 6px;
+  margin-bottom: 10px;
+  font-size: 2rem;
+  font-weight: var(--We-700);
+  padding-left: 10px;
+  box-shadow: 1px 3px 3px rgb(147, 130, 113);
+  border-radius: 0.5rem;
+  color: #333;
+}
+
+.section__table__primary > button:hover,
+.section__table__secound > button:hover {
+  background: var(--clr-white);
+}
+
+.section__table__primary > button:nth-child(4) {
+  background: var(--clr-Verydarkdesaturatedbluebutton);
+  text-transform: uppercase;
+  padding: 0;
+  height: 46px;
+  padding: 18px 10px;
+  font-size: 1rem;
+  color: var(--clr-white);
+}
+
+.section__table__primary > button:nth-child(4),
+.rest {
+  box-shadow: 1px 3px 3px rgb(65, 78, 110);
+  color: #fff;
+}
+
+.section__table__button {
+  margin-right: 0;
+  margin-left: 0;
+  width: 150px;
+  margin-left: 20px;
+  padding-right: 20px;
+  text-transform: uppercase;
+  color: var(--clr-white);
+  outline: none;
+}
+
+.rest,
+.equal {
+  width: 100px;
+  color: #fff;
+  font-size: 1.1rem;
+  margin-right: 10px;
+  line-height: 1.4;
+}
+.rest {
+  background: var(--clr-Verydarkdesaturatedbluebutton);
+}
+
+.equal {
+  background: var(--clr-Red);
+  box-shadow: 1px 3px 3px var(--clr-Darkred);
+  margin-left: 0;
+}
+
+@media screen and (min-width: 500px) {
+  .container__calculator {
+    width: 400px;
+    height: 480px;
+    padding-left: 20px;
+  }
+
+  .container__calculator-header__input {
+    height: 100px;
+    line-height: 2.5;
+  }
+
+  .section__table {
+    height: 305px;
+  }
+
+  button {
+    width: 70px;
+    padding: 5px 22px;
+    margin-right: 15px;
+    padding-left: 20px;
+    margin-bottom: 15px;
+    font-size: 2rem;
+  }
+
+  .section__table__primary,
+  .section__table__secound {
+    padding-left: 23px;
+  }
+
+  .section__table__primary > button:nth-child(4) {
+    height: 40px;
+    font-size: 1.2rem;
+    padding: 13px 10px;
+  }
+
+  .rest,
+  .equal {
+    width: 160px;
+  }
+
+  .rest {
+    margin-right: 0;
+    font-size: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .equal {
+    margin-left: 15px;
+    font-size: 1.1rem;
+    line-height: 2.2;
+  }
+}
+
+@media screen and (min-width: 400px) and (max-width: 499px) {
+  .container__calculator {
+    width: 350px;
+  }
+  .section__table {
+    height: 350px;
+  }
+
+  .section__table__primary,
+  .section__table__secound {
+    padding-left: 20px;
+  }
+
+  .container__calculator-header__input {
+    height: 100px;
+    line-height: 2.5;
+  }
+
+  .section__table__primary > button:nth-child(4) {
+    line-height: 1;
+  }
+
+  button {
+    width: 62px;
+    margin-right: 15px;
+    padding-left: 10px;
+    padding: 10px 22px;
+    margin-bottom: 15px;
+    font-size: 2rem;
+  }
+
+  .rest,
+  .equal {
+    width: 146px;
+    font-size: 1.5rem;
+    margin-right: 10px;
+  }
+
+  .equal {
+    font-size: 1.1rem;
+    line-height: 2;
+  }
+}
