@@ -1,3 +1,3 @@
 # challenge
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/web-platform-sjjbqv/challenge2/index.html)
+[Edit on StackBlitz ⚡️](https://web-platform-sjjbqv.stackblitz.io/challenge2/index.html)
