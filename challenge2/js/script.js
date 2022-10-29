@@ -61,14 +61,23 @@ function changeBackgroundColor(count) {
 }
 
 function operationnumber(number) {
-  //let rex = /[0-9]+$/;
-  //let rex = /^[-{2,}\d]/;
-  let rex =  /^([-]{0,2}[0-9])([0-9]{0,}[-+*/]?)[0-9]+/;
+  let rex = /^([-]{0,2}[0-9])([0-9]{0,}[-+*/]?)[0-9]+/;
   let data = new String(number.innerHTML);
+  let charter = 0;
   numbers += data;
-  console.log(numbers.match(rex));
+
+  if (!numbers.match(rex) && numbers.indexOf('=') != -1) {
+    console.log(numbers);
+  }
+  if (numbers.indexOf('del') != -1) {
+    numbers = numbers.substring(0, numbers.indexOf('del') - 1);
+  }
+  display.innerHTML = numbers;
   /*
-  if (!data.match(rex) && numbers === '') {
+
+  display.innerHTML = numbers;
+  /*
+  if (!data.match(rex)) {
     swal({
       title: 'ADVERTENCIA',
       text: 'debes de ingresar un número antes de realizar la operación.',
@@ -78,7 +87,6 @@ function operationnumber(number) {
   }
 
   if (data.match(rex)) {
-    numbers += data;
     console.log(numbers);
   }
   */
