@@ -69,12 +69,12 @@ function operationnumber(number) {
   if (!numbers.match(rex) && numbers.indexOf('=') != -1) {
     console.log(numbers);
   }
+
   if (numbers.indexOf('del') != -1) {
     numbers = numbers.substring(0, numbers.indexOf('del') - 1);
   }
   display.innerHTML = numbers;
   /*
-
   display.innerHTML = numbers;
   /*
   if (!data.match(rex)) {
