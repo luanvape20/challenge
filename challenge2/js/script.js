@@ -70,8 +70,12 @@ function operationnumber(number) {
     console.log(numbers);
   }
 
-  if (numbers.indexOf('del') != -1) {
-    numbers = numbers.substring(0, numbers.indexOf('del') - 1);
+  if (numbers.indexOf('del') != -1 || numbers.indexOf('rest') != -1) {
+    if (numbers.indexOf('del') != -1 && numbers === '') {
+      numbers = numbers.substring(0, numbers.indexOf('del') - 1);
+    } else {
+      numbers = 0;
+    }
   }
   display.innerHTML = numbers;
   /*
