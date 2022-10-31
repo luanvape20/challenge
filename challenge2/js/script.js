@@ -70,15 +70,15 @@ function operationnumber(number) {
     console.log(numbers);
   }
 
-  if (numbers.indexOf('del') != -1 || numbers.indexOf('rest') != -1) {
-    if (numbers.indexOf('del') != -1) {
-      numbers = numbers.replace('del', '');
-      numbers =
-        numbers.length > 0 ? numbers.substring(0, numbers.length - 1) : 0;
-    } else {
-      numbers = 0;
-    }
+  if (numbers.indexOf('del') != -1) {
+    numbers = numbers.replace('del', '');
+    numbers = numbers.substring(0, numbers.length - 1);
   }
+
+  if (numbers.indexOf('rest') != -1 || numbers === '') {
+    numbers = 0;
+  }
+
   display.innerHTML = numbers;
   /*
   display.innerHTML = numbers;
