@@ -100,5 +100,5 @@ function operatioNumber(number) {
 
 buttonDtarkSlider.addEventListener('click', () => moveslider());
 buttonboard.forEach((element) => {
-  element.addEventListener('click', () => operationnumber(element));
+  element.addEventListener('click', () => operatioNumber(element));
 });
