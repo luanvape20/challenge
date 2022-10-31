@@ -60,7 +60,7 @@ function changeBackgroundColor(count) {
   //display.style.background = color[];
 }
 
-function operationnumber(number) {
+function operatioNumber(number) {
   let rex = /^([-]{0,2}[0-9])([0-9]{0,}[-+*/]?)[0-9]+$/;
   let data = new String(number.innerHTML);
   let charter = 0;
