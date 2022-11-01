@@ -142,6 +142,8 @@ button {
   line-height: 2;
   font-weight: 600;
   background: var(--clr-Verydarkdesaturated);
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .section__table {

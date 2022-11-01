@@ -64,8 +64,10 @@ function changeBackgroundColor(count) {
 function operatioNumber(number) {
   let rex = /^([-]{0,2}[0-9])([0-9]{0,}[-+*/]?)[0-9]+$/;
   let data = new String(number.innerHTML);
-  numbers = numbers.replace('(^[0]{1})+$', '');
   numbers += data;
+  display.innerHTML =
+    numbers.indexOf('del') !== -1 ? numbers.replace('del', '') : numbers;
+  console.log(numbers);
 
   if (!numbers.match(rex) && numbers.indexOf('=') != -1) {
     console.log(numbers);
@@ -77,9 +79,10 @@ function operatioNumber(number) {
   }
 
   if (numbers.indexOf('rest') != -1 || numbers === '') {
-    numbers = '0';
+    numbers = '';
+    display.innerHTML = 0;
   }
-  display.innerHTML = numbers;
+
   /*
   display.innerHTML = numbers;
   /*
