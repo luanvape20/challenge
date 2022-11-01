@@ -17,6 +17,7 @@ let postionslider = [19, 36, 0];
 let count = 0;
 let numbers = '';
 let singOperator = '';
+let charter = 0;
 
 const color = [
   'hsl(30, 25%, 89%)',
@@ -63,7 +64,7 @@ function changeBackgroundColor(count) {
 function operatioNumber(number) {
   let rex = /^([-]{0,2}[0-9])([0-9]{0,}[-+*/]?)[0-9]+$/;
   let data = new String(number.innerHTML);
-  let charter = 0;
+  numbers = numbers.replace('(^[0]{1})+$', '');
   numbers += data;
 
   if (!numbers.match(rex) && numbers.indexOf('=') != -1) {
@@ -76,9 +77,8 @@ function operatioNumber(number) {
   }
 
   if (numbers.indexOf('rest') != -1 || numbers === '') {
-    numbers = 0;
+    numbers = '0';
   }
-
   display.innerHTML = numbers;
   /*
   display.innerHTML = numbers;
