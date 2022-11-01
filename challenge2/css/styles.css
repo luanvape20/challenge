@@ -231,7 +231,7 @@ button {
 @media screen and (min-width: 500px) {
   .container__calculator {
     width: 400px;
-    height: 480px;
+    height: 490px;
     padding-left: 20px;
   }
 
@@ -241,11 +241,12 @@ button {
   }
 
   .section__table {
-    height: 305px;
+    height: 330px;
   }
 
   button {
     width: 70px;
+    height: 45px;
     padding: 5px 22px;
     margin-right: 15px;
     padding-left: 20px;
@@ -259,7 +260,7 @@ button {
   }
 
   .section__table__primary > button:nth-child(4) {
-    height: 40px;
+    height: 45px;
     font-size: 1.2rem;
     padding: 13px 10px;
   }
@@ -267,6 +268,7 @@ button {
   .rest,
   .equal {
     width: 160px;
+    height: 50px;
   }
 
   .rest {

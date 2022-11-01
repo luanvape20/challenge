@@ -70,6 +70,12 @@ function operatioNumber(number) {
 
   if (!numbers.match(rex) && numbers.indexOf('=') != -1) {
     console.log(numbers);
+    swal({
+      title: 'ADVERTENCIA',
+      text: 'debes de ingresar un número antes de realizar la operación.',
+      icon: 'warning',
+      button: 'Aceptar',
+    });
   }
 
   if (numbers.indexOf('del') != -1) {
@@ -82,6 +88,8 @@ function operatioNumber(number) {
     display.innerHTML = 0;
   }
 
+  if (data.match(rex)) {
+  }
   /*
   display.innerHTML = numbers;
   /*
