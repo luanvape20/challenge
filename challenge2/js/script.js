@@ -67,7 +67,6 @@ function operatioNumber(number) {
   numbers += data;
   display.innerHTML =
     numbers.indexOf('del') !== -1 ? numbers.replace('del', '') : numbers;
-  console.log(numbers);
 
   if (!numbers.match(rex) && numbers.indexOf('=') != -1) {
     console.log(numbers);
