@@ -17,6 +17,7 @@ let postionslider = [19, 36, 0];
 let count = 0;
 let numbers = '';
 let singOperator = '';
+let character = '';
 
 const color = [
   'hsl(30, 25%, 89%)',
@@ -61,24 +62,26 @@ function changeBackgroundColor(count) {
 }
 
 function validationNumber(number) {
-  let rex = /^([-]{0,2}[0-9])([0-9]{1}[-+*/]?)+([0-9][=])+$/;
   let data = new String(number.innerHTML);
   numbers += data;
-  display.innerHTML =
-    numbers.indexOf('del') !== -1 ? numbers.replace('del', '') : numbers;
+  console.log(numbers);
 
   if (numbers.indexOf('del') != -1) {
     numbers = numbers.replace('del', '');
     numbers = numbers.substring(0, numbers.length - 1);
   }
 
-  if (numbers.indexOf('rest') != -1 || numbers === '') {
-    numbers = '';
-    display.innerHTML = 0;
+  if (numbers.indexOf('rest') != -1) {
+    display.innerHTML = '';
+    numbers = '0';
   }
+  operatioNumber(numbers);
+  display.innerHTML = numbers;
+}
 
-  if (data.match(rex)) {
-    operatioNumber(numbers);
+function operatioNumber(number) {
+  let rex = /^([-]{0,2}[0-9])([0-9]{1}[-+*/]?)+([0-9][=])+$/;
+  if (numbers.match(rex)) {
   } else if (!numbers.match(rex) && numbers.indexOf('=') != -1) {
     console.log(numbers);
     swal({
@@ -89,8 +92,6 @@ function validationNumber(number) {
     });
   }
 }
-
-function operatioNumber(number) {}
 
 buttonDtarkSlider.addEventListener('click', () => moveslider());
 buttonboard.forEach((element) => {
