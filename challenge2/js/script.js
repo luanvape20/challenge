@@ -61,24 +61,14 @@ function changeBackgroundColor(count) {
   //display.style.background = color[];
 }
 
+function validationNumber() {}
+
 function operatioNumber(number) {
-  //^([-]{0,2}[0-9])([0-9]{1}[-+*/]?)+([0-9][=])+$
-  //let rex = /^([-]{0,2}[0-9])([0-9]{0,}[-+*/]?)[0-9]+$/;
   let rex = /^([-]{0,2}[0-9])([0-9]{1}[-+*/]?)+([0-9][=])+$/;
   let data = new String(number.innerHTML);
   numbers += data;
   display.innerHTML =
     numbers.indexOf('del') !== -1 ? numbers.replace('del', '') : numbers;
-
-  if (!numbers.match(rex) && numbers.indexOf('=') != -1) {
-    console.log(numbers);
-    swal({
-      title: 'ADVERTENCIA',
-      text: 'debes de ingresar un número antes de realizar la operación.',
-      icon: 'warning',
-      button: 'Aceptar',
-    });
-  }
 
   if (numbers.indexOf('del') != -1) {
     numbers = numbers.replace('del', '');
@@ -89,8 +79,15 @@ function operatioNumber(number) {
     numbers = '';
     display.innerHTML = 0;
   }
-
-  if (data.match(rex) && numbers.indexOf('=') != -1) {
+  if (data.match(rex)) {
+  } else if (!numbers.match(rex) && numbers.indexOf('=') != -1) {
+    console.log(numbers);
+    swal({
+      title: 'ADVERTENCIA',
+      text: 'debes de ingresar un número antes de realizar la operación.',
+      icon: 'warning',
+      button: 'Aceptar',
+    });
   }
 }
 
