@@ -62,6 +62,7 @@ function changeBackgroundColor(count) {
 }
 
 function operatioNumber(number) {
+  //^([-]{0,2}[0-9])([0-9]{1}[-+*/]?)+([0-9][=])+$
   let rex = /^([-]{0,2}[0-9])([0-9]{0,}[-+*/]?)[0-9]+$/;
   let data = new String(number.innerHTML);
   numbers += data;
@@ -88,7 +89,7 @@ function operatioNumber(number) {
     display.innerHTML = 0;
   }
 
-  if (data.match(rex)) {
+  if (data.match(rex) && numbers.indexOf('=') != -1) {
   }
   /*
   display.innerHTML = numbers;
