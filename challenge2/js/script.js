@@ -76,6 +76,7 @@ function validationNumber(number) {
     numbers = '';
     display.innerHTML = 0;
   }
+
   if (data.match(rex)) {
     operatioNumber(numbers);
   } else if (!numbers.match(rex) && numbers.indexOf('=') != -1) {
