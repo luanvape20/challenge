@@ -92,22 +92,6 @@ function operatioNumber(number) {
 
   if (data.match(rex) && numbers.indexOf('=') != -1) {
   }
-  /*
-  display.innerHTML = numbers;
-  /*
-  if (!data.match(rex)) {
-    swal({
-      title: 'ADVERTENCIA',
-      text: 'debes de ingresar un número antes de realizar la operación.',
-      icon: 'warning',
-      button: 'Aceptar',
-    });
-  }
-
-  if (data.match(rex)) {
-    console.log(numbers);
-  }
-  */
 }
 
 buttonDtarkSlider.addEventListener('click', () => moveslider());
