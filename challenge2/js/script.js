@@ -17,7 +17,6 @@ let postionslider = [19, 36, 0];
 let count = 0;
 let numbers = '';
 let singOperator = '';
-let charter = 0;
 
 const color = [
   'hsl(30, 25%, 89%)',
@@ -61,9 +60,7 @@ function changeBackgroundColor(count) {
   //display.style.background = color[];
 }
 
-function validationNumber() {}
-
-function operatioNumber(number) {
+function validationNumber(number) {
   let rex = /^([-]{0,2}[0-9])([0-9]{1}[-+*/]?)+([0-9][=])+$/;
   let data = new String(number.innerHTML);
   numbers += data;
@@ -80,6 +77,7 @@ function operatioNumber(number) {
     display.innerHTML = 0;
   }
   if (data.match(rex)) {
+    operatioNumber(numbers);
   } else if (!numbers.match(rex) && numbers.indexOf('=') != -1) {
     console.log(numbers);
     swal({
@@ -91,7 +89,9 @@ function operatioNumber(number) {
   }
 }
 
+function operatioNumber(number) {}
+
 buttonDtarkSlider.addEventListener('click', () => moveslider());
 buttonboard.forEach((element) => {
-  element.addEventListener('click', () => operatioNumber(element));
+  element.addEventListener('click', () => validationNumber(element));
 });
