@@ -64,12 +64,12 @@ function changeBackgroundColor(count) {
 function validationNumber(number) {
   let data = new String(number.innerHTML);
   numbers += data;
-
   console.log(numbers);
 
   if (numbers.indexOf('del') != -1) {
     numbers = numbers.replace('del', '');
     numbers = numbers.substring(0, numbers.length - 1);
+    numbers = numbers.length === 0 ? numbers.replace('', '0') : numbers;
   }
 
   if (numbers.indexOf('rest') != -1) {
