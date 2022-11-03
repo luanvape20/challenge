@@ -224,7 +224,7 @@ button {
 
 .equal {
   background: var(--clr-Red);
-  box-shadow: 1px 3px 3px var(--clr-Darkred);
+  box-shadow: 0px 4px 1px var(--clr-Darkred);
   margin-left: 0;
 }
 
