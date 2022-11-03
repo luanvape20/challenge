@@ -64,6 +64,7 @@ function changeBackgroundColor(count) {
 function validationNumber(number) {
   let data = new String(number.innerHTML);
   numbers += data;
+
   console.log(numbers);
 
   if (numbers.indexOf('del') != -1) {
