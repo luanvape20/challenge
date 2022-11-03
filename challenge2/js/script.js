@@ -80,6 +80,7 @@ function validationNumber(number) {
 }
 
 function operatioNumber(number) {
+  //^([-]{0,2}\d*)([-+*/]{1})(\d*[=])+$
   let rex = /^([-]{0,2}[0-9])([0-9]{1}[-+*/]?)+([0-9][=])+$/;
   if (numbers.match(rex)) {
   } else if (!numbers.match(rex) && numbers.indexOf('=') != -1) {
