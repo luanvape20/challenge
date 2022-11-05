@@ -9,7 +9,6 @@ const buttonminus = document.getElementById('minus');
 const buttondot = document.getElementById('dot');
 const buttonsplit = document.getElementById('split');
 const buttonmultiply = document.getElementById('multiply');
-const buttonrest = document.getElementById('rest');
 const buttonequal = document.getElementById('equal');
 //let element = getComputedStyle(document.documentElement);
 
@@ -17,7 +16,7 @@ let postionslider = [19, 36, 0];
 let count = 0;
 let numbers = '';
 let singOperator = '';
-let character = '';
+let size = 0;
 
 const color = [
   'hsl(30, 25%, 89%)',
@@ -63,15 +62,16 @@ function changeBackgroundColor(count) {
 
 function validationNumber(number) {
   let data = new String(number.innerHTML);
-  //  numbers += numbers.replace(/(^\d\w*)+$/, '');
   numbers += data;
   console.log(numbers);
 
-  if (numbers.indexOf('del') != -1) {
+  if (numbers.indexOf('del') != -1 && size != 1) {
     numbers = numbers.replace('del', '');
-    numbers = numbers.substring(1, numbers.length - 1);
-    numbers = numbers.replace(/(^\d)+$/, '0');
-    console.log(numbers);
+    //character = numbers.charAt(numbers.length - 1);
+    numbers = numbers.replace(numbers.charAt(numbers.length - 1), '');
+    size = numbers.length;
+    console.log(size);
+    // numbers = numbers.substring(0, numbers.length - 1);
     //numbers = numbers.length === 0 ? numbers.replace('', '0') : numbers;
   }
 
@@ -79,13 +79,12 @@ function validationNumber(number) {
     display.innerHTML = '';
     numbers = '0';
   }
+
   operatioNumber(numbers);
   display.innerHTML = numbers;
 }
 
 function operatioNumber(number) {
-  //^([-]{0,2}\d*)([-+*/]{1})(\d*[=])+$
-  ///^([-]{0,2}[0-9])([0-9]{1}[-+*/]?)+([0-9][=])+$/
   let rex = /^([-]{0,2}\d*)([-+*/]{1})(\d*[=])+$/;
   if (numbers.match(rex)) {
   } else if (!numbers.match(rex) && numbers.indexOf('=') != -1) {
