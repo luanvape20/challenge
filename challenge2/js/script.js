@@ -67,10 +67,9 @@ function validationNumber(number) {
 
   if (numbers.indexOf('del') != -1 && size != 1) {
     numbers = numbers.replace('del', '');
-    //character = numbers.charAt(numbers.length - 1);
     numbers = numbers.replace(numbers.charAt(numbers.length - 1), '');
     size = numbers.length;
-    console.log(size);
+    //numbres = size === 1 ? numbers.charAt(size).replace()
     // numbers = numbers.substring(0, numbers.length - 1);
     //numbers = numbers.length === 0 ? numbers.replace('', '0') : numbers;
   }
