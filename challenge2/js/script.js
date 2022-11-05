@@ -65,10 +65,11 @@ function validationNumber(number) {
   numbers += data;
   console.log(numbers);
 
-  if (numbers.indexOf('del') != -1 && size != 1) {
+  if (numbers.indexOf('del') != -1) {
     numbers = numbers.replace('del', '');
     numbers = numbers.replace(numbers.charAt(numbers.length - 1), '');
     size = numbers.length;
+    numbers = numbers.replace(/([0-9]$)/, '0');
     //numbres = size === 1 ? numbers.charAt(size).replace()
     // numbers = numbers.substring(0, numbers.length - 1);
     //numbers = numbers.length === 0 ? numbers.replace('', '0') : numbers;
