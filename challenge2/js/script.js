@@ -62,14 +62,27 @@ function changeBackgroundColor(count) {
 
 function validationNumber(number) {
   let data = new String(number.innerHTML);
+  let character = '';
   numbers += data;
   console.log(numbers);
 
   if (numbers.indexOf('del') != -1) {
-    numbers = numbers.replace('del', '');
-    numbers = numbers.replace(numbers.charAt(numbers.length - 1), '');
-    size = numbers.length;
+    count = numbers.indexOf('del') - 1;
+    numbers = numbers.substring(1, count);
+    numbers = numbers.replace('d', '0');
+    //numbers = numbers.replace(/([0-9]$)/, '0');
+    /**
+     * 
+     *  count = numbers.indexOf('del');
+    numbers = number.charAt(count).replace('del', '');
     numbers = numbers.replace(/([0-9]$)/, '0');
+    character = numbers.charAt(numbers.length);
+    numbers = numbers.substring(1, numbers.length);
+    console.log(character);
+     * 
+     */
+    console.log(numbers);
+    //numbers = numbers.replace(numbers.charAt(numbers.length - 1), '');
     //numbres = size === 1 ? numbers.charAt(size).replace()
     // numbers = numbers.substring(0, numbers.length - 1);
     //numbers = numbers.length === 0 ? numbers.replace('', '0') : numbers;
