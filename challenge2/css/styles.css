@@ -284,6 +284,36 @@ button {
   }
 }
 
+@media screen and (min-width: 336px) and (max-width: 399px) {
+  .container__calculator {
+    width: 320px;
+  }
+
+  .section__table {
+    height: 335px;
+  }
+  .section__table__primary,
+  .section__table__secound {
+    padding-left: 15px;
+  }
+
+  button {
+    width: 63px;
+    margin-right: 10px;
+  }
+  .section__table__primary > button:nth-child(4) {
+    height: 53px;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  .rest,
+  .equal {
+    width: 135px;
+    margin-left: 15px;
+    margin-right: 3px;
+  }
+}
+
 @media screen and (min-width: 400px) and (max-width: 499px) {
   .container__calculator {
     width: 350px;
