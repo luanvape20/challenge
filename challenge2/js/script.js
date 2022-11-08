@@ -64,12 +64,11 @@ function validationNumber(number) {
   let data = new String(number.innerHTML);
   let character = '';
   numbers += data;
-  console.log(numbers);
 
   if (numbers.indexOf('del') != -1) {
-    count = numbers.indexOf('del') - 1;
-    numbers = numbers.substring(1, count);
-    numbers = numbers.replace('d', '0');
+    numbers = numbers.replace('del', '');
+    numbers = numbers.replace(/([0-9]$)/, '0');
+    console.log(numbers);
     //numbers = numbers.replace(/([0-9]$)/, '0');
     /**
      * 
@@ -81,7 +80,7 @@ function validationNumber(number) {
     console.log(character);
      * 
      */
-    console.log(numbers);
+
     //numbers = numbers.replace(numbers.charAt(numbers.length - 1), '');
     //numbres = size === 1 ? numbers.charAt(size).replace()
     // numbers = numbers.substring(0, numbers.length - 1);
