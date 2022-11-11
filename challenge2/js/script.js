@@ -66,9 +66,11 @@ function validationNumber(number) {
   numbers += data;
 
   if (numbers.indexOf('del') != -1) {
-    numbers = numbers.replace('del', '');
-    numbers = numbers.replace(/(^[0-9])/, '0');
-    numbers = numbers.replace(/([1-9]$)/, '');
+    numbers = numbers.replace('del', '0');
+    numbers = numbers.replace(/(^[0-9])/, '');
+    console.log(numbers);
+    //numbers = numbers.replace(/(^[0-9])/, '0');
+    //numbers = numbers.replace(/([1-9]$)/, '');
 
     //numbers = numbers.replace(/([0-9]$)/, '0');
     /**
@@ -94,7 +96,7 @@ function validationNumber(number) {
   }
 
   operatioNumber(numbers);
-  display.innerHTML = numbers;
+  //display.innerHTML = numbers;
 }
 
 function operatioNumber(number) {
