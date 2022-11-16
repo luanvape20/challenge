@@ -68,8 +68,7 @@ function validationNumber(number) {
   if (numbers.indexOf('del') != -1) {
     numbers = numbers.replace('del', '0');
     character = numbers;
-    numbers = numbers.substring(0, numbers.indexOf('0'));
-    numbers = numbers.replace(/(^[0-9])/, '');
+    numbers = numbers.substring(1, numbers.indexOf('0'));
     console.log(numbers, character);
     //numbers = numbers.replace(/(^[0-9])/, '0');
     //numbers = numbers.replace(/([1-9]$)/, '');
