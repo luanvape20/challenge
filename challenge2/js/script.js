@@ -67,29 +67,10 @@ function validationNumber(number) {
 
   if (numbers.indexOf('del') != -1) {
     numbers = numbers.replace('del', '0');
-    //character = numbers;
-    numbers = numbers.charAt(numbers.indexOf('0') - 1).replace(/(\d)/, '0');
-    //numbers = numbers.substring(1, numbers.indexOf('0'));
+    character = numbers.substring(1, numbers.indexOf('0'));
+    character = character.length === 0 ? '0' : character;
+    numbers = character;
     console.log(numbers, character);
-    //numbers = numbers.replace(/(^[0-9])/, '0');
-    //numbers = numbers.replace(/([1-9]$)/, '');
-
-    //numbers = numbers.replace(/([0-9]$)/, '0');
-    /**
-     * 
-     *  count = numbers.indexOf('del');
-    numbers = number.charAt(count).replace('del', '');
-    numbers = numbers.replace(/([0-9]$)/, '0');
-    character = numbers.charAt(numbers.length);
-    numbers = numbers.substring(1, numbers.length);
-    console.log(character);
-     * 
-     */
-
-    //numbers = numbers.replace(numbers.charAt(numbers.length - 1), '');
-    //numbres = size === 1 ? numbers.charAt(size).replace()
-    // numbers = numbers.substring(0, numbers.length - 1);
-    //numbers = numbers.length === 0 ? numbers.replace('', '0') : numbers;
   }
 
   if (numbers.indexOf('rest') != -1) {
