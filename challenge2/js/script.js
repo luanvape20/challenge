@@ -61,16 +61,15 @@ function changeBackgroundColor(count) {
 }
 
 function validationNumber(number) {
-  let data = new String(number.innerHTML);
+  let data =  String(number.innerHTML);
   let character = '';
   numbers += data;
 
   if (numbers.indexOf('del') != -1) {
     numbers = numbers.replace('del', '0');
-    character = numbers.substring(1, numbers.indexOf('0'));
-    character = character.length === 0 ? '0' : character;
-    numbers = character;
-    console.log(numbers, character);
+    character = numbers.substring(1, numbers.length - 1);
+    numbers = numbers.length === 0 ? '0' : numbers;
+    console.log(numbers);
   }
 
   if (numbers.indexOf('rest') != -1) {
