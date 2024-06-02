@@ -61,15 +61,15 @@ function changeBackgroundColor(count) {
 }
 
 function validationNumber(number) {
-  let data =  String(number.innerHTML);
-  let character = '';
-  numbers += data;
+  let data = number.innerHTML.toString();
+  numbers = numbers.concat(data);
+  numbers = numbers.replace('•', ',');
 
   if (numbers.indexOf('del') != -1) {
-    numbers = numbers.replace('del', '0');
-    character = numbers.substring(1, numbers.length - 1);
+    numbers = numbers.replace('del', '');
+    numbers = numbers.substring(0, numbers.length - 1);
     numbers = numbers.length === 0 ? '0' : numbers;
-    console.log(numbers);
+    //console.log(numbers);
   }
 
   if (numbers.indexOf('rest') != -1) {
@@ -77,15 +77,20 @@ function validationNumber(number) {
     numbers = '0';
   }
 
-  operatioNumber(numbers);
-  //display.innerHTML = numbers;
+  operatioNumber();
+  display.innerHTML = numbers;
 }
 
-function operatioNumber(number) {
-  let rex = /^([-]{0,2}\d*)([-+*/]{1})(\d*[=])+$/;
+function operatioNumber() {
+  let rex = /^(-?\d+)([-+x/])(-?\d+)(([-+x/]-?\d+)*)(=)$/;
+  let operation = "";
+  let num1 = 0;
+  let num2 = 0;
+
   if (numbers.match(rex)) {
+    numbers = numbers.replace('=', '');
   } else if (!numbers.match(rex) && numbers.indexOf('=') != -1) {
-    console.log(numbers);
+    numbers = numbers.replace('=', '');
     swal({
       title: 'ADVERTENCIA',
       text: 'debes de ingresar un número antes de realizar la operación.',
