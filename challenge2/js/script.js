@@ -4,11 +4,7 @@ const display = document.getElementById('display');
 const board = document.getElementById('board');
 const buttonboard = Array.from(document.getElementsByTagName('button'));
 const buttondel = document.getElementById('del');
-const buttonsum = document.getElementById('sum');
-const buttonminus = document.getElementById('minus');
-const buttondot = document.getElementById('dot');
 const buttonsplit = document.getElementById('split');
-const buttonmultiply = document.getElementById('multiply');
 const buttonequal = document.getElementById('equal');
 //let element = getComputedStyle(document.documentElement);
 
@@ -83,12 +79,24 @@ function validationNumber(number) {
 
 function operatioNumber() {
   let rex = /^(-?\d+)([-+x/])(-?\d+)(([-+x/]-?\d+)*)(=)$/;
-  let operation = "";
+  let operation = [];
   let num1 = 0;
   let num2 = 0;
 
   if (numbers.match(rex)) {
     numbers = numbers.replace('=', '');
+
+    operation = numbers.split("").filter((value) => {
+      return value.match(/[+\-x/%]/g) ? value : "";
+    });
+
+    num1 = Number(numbers.split("").filter((value) =>{
+        
+    }));
+    
+    console.log(operation)
+   
+
   } else if (!numbers.match(rex) && numbers.indexOf('=') != -1) {
     numbers = numbers.replace('=', '');
     swal({
