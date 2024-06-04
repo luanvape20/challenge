@@ -82,12 +82,19 @@ function operatioNumber() {
   let operation = [];
   let num1 = 0;
   let num2 = 0;
+  let result = 0;
 
   if (numbers.match(rex)) {
     numbers = numbers.replace('=', '');
 
     operation = numbers.split("").filter((value) => /[+\-x/%]/.test(value));
     num1 = Number(numbers.split(operation[0])[0].match(/\d+/)[0]);
+
+    if (operation.length > 1) {
+      console.log("hola")
+      num2 = Number(numbers.split(operation[0])[1].match(/\d+/)[0]);
+      console.log(num2)
+    }
 
     console.log(operation)
     console.log(num1)
