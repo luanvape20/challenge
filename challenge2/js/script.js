@@ -80,18 +80,18 @@ function validationNumber(number) {
 function operatioNumber() {
   let rex = /^(-?\d+)([-+x/])(-?\d+)(([-+x/]-?\d+)*)(=)$/;
   let operation = [];
-  let num1 = "";
+  let num1 = 0;
   let num2 = 0;
 
   if (numbers.match(rex)) {
     numbers = numbers.replace('=', '');
 
     operation = numbers.split("").filter((value) => /[+\-x/%]/.test(value));
-
-    //num1 = numbers.split("").filter((value) => /^\d+/.test(value)).join("");
+    num1 = Number(numbers.split(operation[0])[0].match(/\d+/)[0]);
 
     console.log(operation)
     console.log(num1)
+
 
   } else if (!numbers.match(rex) && numbers.indexOf('=') != -1) {
     numbers = numbers.replace('=', '');
