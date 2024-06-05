@@ -61,20 +61,17 @@ function validationNumber(number) {
   numbers = numbers.concat(data);
   numbers = numbers.replace('•', ',');
 
-  if (numbers.indexOf('del') != -1) {
+  if (numbers.includes('del')) {
     numbers = numbers.replace('del', '');
-    numbers = numbers.substring(0, numbers.length - 1);
-    numbers = numbers.length === 0 ? '0' : numbers;
-    //console.log(numbers);
+    numbers = numbers.slice(0, -1);
   }
 
-  if (numbers.indexOf('rest') != -1) {
-    display.innerHTML = '';
-    numbers = '0';
+  if (numbers.includes('rest')) {
+    numbers = '';
   }
 
   operatioNumber();
-  display.innerHTML = numbers;
+  display.innerHTML = numbers.length === 0 ? '0' : numbers;
 }
 
 function operatioNumber() {
@@ -86,18 +83,23 @@ function operatioNumber() {
 
   if (numbers.match(rex)) {
     numbers = numbers.replace('=', '');
+    numbers = numbers.replace('x', "*");
 
-    operation = numbers.split("").filter((value) => /[+\-x/%]/.test(value));
+    operation = numbers.split("").filter((value) => /[+\-*/%]/.test(value));
     num1 = Number(numbers.split(operation[0])[0].match(/\d+/)[0]);
+    num2 = Number(numbers.split(operation[0])[1].match(/\d+/)[0]);
+    result = `${num1} ${operation[0]} ${num2}`;
 
     if (operation.length > 1) {
       console.log("hola")
-      num2 = Number(numbers.split(operation[0])[1].match(/\d+/)[0]);
-      console.log(num2)
+      result = `${num1} ${operation[0]} ${num2}`;
+      result = eval(result);
+      console.log(result);
     }
 
-    console.log(operation)
-    console.log(num1)
+
+    result = eval(result);
+    numbers = result.toString();
 
 
   } else if (!numbers.match(rex) && numbers.indexOf('=') != -1) {
