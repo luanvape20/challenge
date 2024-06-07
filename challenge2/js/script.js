@@ -6,7 +6,7 @@ const buttonboard = Array.from(document.getElementsByTagName('button'));
 const buttondel = document.getElementById('del');
 const buttonsplit = document.getElementById('split');
 const buttonequal = document.getElementById('equal');
-//let element = getComputedStyle(document.documentElement);
+
 
 let postionslider = [19, 36, 0];
 let count = 0;
@@ -14,11 +14,13 @@ let numbers = '';
 let singOperator = '';
 let size = 0;
 
+
 const color = [
   'hsl(30, 25%, 89%)',
   'hsl(268,75.0%,9.4%)',
   'hsl(222, 26%, 31%)',
 ];
+
 
 const backgroundElement = [
   display,
@@ -35,19 +37,31 @@ function moveslider() {
   changeBackgroundColor(count);
   count++;
 
+
   if (count === 3) {
-    changeBackgroundColor(count);
     count = 0;
   }
 }
 
 function getCount() {
-  let result = '';
-  result = backgroundElement.map((element) => {
-    return getComputedStyle(element, 'background:').backgroundColor;
+  let backgroundColors;
+  backgroundColors = backgroundElement.map(element => {
+    //display, buttonequal, buttonDtarkSlider, board, buttondel
+    /**
+     *  if count === 0
+     *  if count === 1
+     *  if count === 2
+     *  if count === 3
+     *
+     *
+     **/
+
+    return getComputedStyle(element).backgroundColor;
   });
 
-  return result;
+  //.getPropertyValue('--clr-Lightgrayishorange');
+
+  return backgroundColors;
 }
 
 function changeBackgroundColor(count) {
@@ -56,14 +70,13 @@ function changeBackgroundColor(count) {
   //display.style.background = color[];
 }
 
+
 function validationNumber(number) {
   let data = number.innerHTML.toString();
-  numbers = numbers.concat(data);
-  numbers = numbers.replace('•', ',');
+  numbers = numbers.concat(data).replace('•', ',');
 
   if (numbers.includes('del')) {
-    numbers = numbers.replace('del', '');
-    numbers = numbers.slice(0, -1);
+    numbers = numbers.replace('del', '').slice(0, -1);
   }
 
   if (numbers.includes('rest')) {
@@ -74,42 +87,29 @@ function validationNumber(number) {
   display.innerHTML = numbers.length === 0 ? '0' : numbers;
 }
 
+
+/**
+ * Performs arithmetic operations based on the input string.
+ */
 function operatioNumber() {
-  let rex = /^(-?\d+)([-+x/])(-?\d+)(([-+x/]-?\d+)*)(=)$/;
-  let operation = [];
-  let num1 = 0;
-  let num2 = 0;
-  let result = 0;
+  if (numbers.includes('=')) {
+    try {
+      // Replace 'x' with '*' for multiplication
+      numbers = numbers.replace(/x/g, '*').replace('=', '');
 
-  if (numbers.match(rex)) {
-    numbers = numbers.replace('=', '');
-    numbers = numbers.replace('x', "*");
+      // Evaluate the mathematical expression
+      let result = eval(numbers);
+      numbers = result.toString();
+      display.innerHTML = numbers
 
-    operation = numbers.split("").filter((value) => /[+\-*/%]/.test(value));
-    num1 = Number(numbers.split(operation[0])[0].match(/\d+/)[0]);
-    num2 = Number(numbers.split(operation[0])[1].match(/\d+/)[0]);
-    result = `${num1} ${operation[0]} ${num2}`;
-
-    if (operation.length > 1) {
-      console.log("hola")
-      result = `${num1} ${operation[0]} ${num2}`;
-      result = eval(result);
-      console.log(result);
+    } catch (e) {
+      swal({
+        title: 'ADVERTENCIA',
+        text: 'Error en la expresión matemática.',
+        icon: 'warning',
+        button: 'Aceptar',
+      });
     }
-
-
-    result = eval(result);
-    numbers = result.toString();
-
-
-  } else if (!numbers.match(rex) && numbers.indexOf('=') != -1) {
-    numbers = numbers.replace('=', '');
-    swal({
-      title: 'ADVERTENCIA',
-      text: 'debes de ingresar un número antes de realizar la operación.',
-      icon: 'warning',
-      button: 'Aceptar',
-    });
   }
 }
 
