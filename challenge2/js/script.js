@@ -6,13 +6,15 @@ const buttonboard = Array.from(document.getElementsByTagName('button'));
 const buttondel = document.getElementById('del');
 const buttonsplit = document.getElementById('split');
 const buttonequal = document.getElementById('equal');
+const buttonrest = document.getElementById('rest');
 
 
 let postionslider = [19, 36, 0];
 let count = 0;
 let numbers = '';
-let singOperator = '';
-let size = 0;
+let indexSlider = 1;
+let colorElement = [];
+const mapColor = new Map();
 
 
 const color = [
@@ -22,12 +24,42 @@ const color = [
 ];
 
 
+const propertySets = {
+  0: [
+    '--clr-Verydarkdesaturated',
+    '--clr-Red',
+    '--clr-Verydarkdesaturated',
+    '--clr-Verydarkdesaturatedbluebutton',
+    '--clr-Red',
+    '--clr-Verydarkdesaturatedbluebutton'
+  ],
+  1: [
+    '--clr-white',
+    '--clr-Orange',
+    '--clr-whiteOpacitiy',
+    '--clr-Purecyan',
+    '--clr-Orange',
+    '--clr-Purecyan'
+  ],
+
+  2: [
+    '--clr-Verydarkviolet',
+    '--clr-DarkModeratecyan',
+    '--clr-Verydarkviolet',
+    '--clr-Darkviolet',
+    '--clr-DarkModeratecyan',
+    '--clr-Darkviolet'
+  ]
+};
+
+
 const backgroundElement = [
   display,
   buttonDtarkSlider,
   board,
   buttondel,
   buttonequal,
+  buttonrest,
 ];
 /**
  *This function is responsible for moving the slider to change the colors
@@ -43,31 +75,46 @@ function moveslider() {
   }
 }
 
-function getCount() {
+
+function getColorElement(count) {
   let backgroundColors;
-  backgroundColors = backgroundElement.map(element => {
-    //display, buttonequal, buttonDtarkSlider, board, buttondel
-    /**
-     *  if count === 0
-     *  if count === 1
-     *  if count === 2
-     *  if count === 3
-     *
-     *
-     **/
+  const properties = propertySets[count];
+  let key = count;
 
-    return getComputedStyle(element).backgroundColor;
-  });
+  backgroundColors = properties.map((property, index) =>
+    getComputedStyle(backgroundElement[index]).getPropertyValue(property)
+  );
 
-  //.getPropertyValue('--clr-Lightgrayishorange');
+
+  mapColor.set(key, backgroundColors);
 
   return backgroundColors;
 }
 
 function changeBackgroundColor(count) {
-  console.log(getCount());
+
   body.style.background = color[count];
-  //display.style.background = color[];
+  //console.log(count);
+
+  //backgroundElement.push(...buttonboard);
+  console.log(indexSlider);
+
+
+  if (indexSlider < 3) {
+    colorElement = getColorElement(indexSlider);
+    indexSlider++;
+  }
+
+
+  if (indexSlider === 3) {
+    indexSlider = 0;
+  }
+
+
+  backgroundElement.forEach((element, index) => {
+    element.style.setProperty("background", colorElement[index]);
+    element.style.transition = '0.5s 2s ease-out';
+  });
 }
 
 
@@ -79,7 +126,7 @@ function validationNumber(number) {
     numbers = numbers.replace('del', '').slice(0, -1);
   }
 
-  if (numbers.includes('rest')) {
+  if (numbers.includes('reset')) {
     numbers = '';
   }
 
@@ -87,11 +134,35 @@ function validationNumber(number) {
   display.innerHTML = numbers.length === 0 ? '0' : numbers;
 }
 
-
 /**
  * Performs arithmetic operations based on the input string.
  */
 function operatioNumber() {
+  const regex = /^(-?\d*\,?\d+)([-+x/])(-?\d*\,?\d+)(([-+x/]-?\d*\.?\d+)*)(=)$/;
+  const rex = /^(0*(\.\d+)?\/0+(\.0+)?=|\d+(\.\d+)?\/0+(\.0+)?=)$/;
+
+  if (numbers.match(regex) && !numbers.match(rex)) {
+    // Replace 'x' with '*' for multiplication
+    numbers = numbers.replace(/x/g, '*').replace('=', '');
+
+    // Evaluate the mathematical expression
+
+    let result = eval(numbers);
+    numbers = result.toString().replace('.', ',');
+    display.innerHTML = numbers;
+
+
+  } else if (numbers.includes('=')) {
+    numbers = numbers.replace('=', '');
+    Swal.fire({
+      title: 'ADVERTENCIA',
+      text: 'Error en la expresión matemática.',
+      icon: 'warning',
+      button: 'Aceptar',
+      footer: '<a href="#">Más información...</a>'
+    });
+  }
+  /** 
   if (numbers.includes('=')) {
     try {
       // Replace 'x' with '*' for multiplication
@@ -99,18 +170,19 @@ function operatioNumber() {
 
       // Evaluate the mathematical expression
       let result = eval(numbers);
-      numbers = result.toString();
-      display.innerHTML = numbers
+      numbers = result.toString().replace('.', ',');
+      display.innerHTML = numbers;
 
     } catch (e) {
-      swal({
+      Swal.fire({
         title: 'ADVERTENCIA',
         text: 'Error en la expresión matemática.',
         icon: 'warning',
         button: 'Aceptar',
+        footer: '<a href="#">Más información...</a>'
       });
     }
-  }
+    **/
 }
 
 buttonDtarkSlider.addEventListener('click', () => moveslider());
