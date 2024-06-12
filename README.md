@@ -1,3 +1,2 @@
 # challenge
-
-[Edit on StackBlitz ⚡️](https://web-platform-sjjbqv.stackblitz.io/challenge2/index.html)
+https://replit.com/@luanvape20/challenge#challenge2/index.html
