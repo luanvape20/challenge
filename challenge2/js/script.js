@@ -12,9 +12,6 @@ const buttonrest = document.getElementById('rest');
 let postionslider = [19, 36, 0];
 let count = 0;
 let numbers = '';
-let indexSlider = 1;
-let colorElement = [];
-const mapColor = new Map();
 
 
 const color = [
@@ -61,6 +58,7 @@ const backgroundElement = [
   buttonequal,
   buttonrest,
 ];
+
 /**
  *This function is responsible for moving the slider to change the colors
  */
@@ -69,52 +67,26 @@ function moveslider() {
   changeBackgroundColor(count);
   count++;
 
-
   if (count === 3) {
     count = 0;
   }
 }
 
 
-function getColorElement(count) {
-  let backgroundColors;
-  const properties = propertySets[count];
-  let key = count;
 
-  backgroundColors = properties.map((property, index) =>
-    getComputedStyle(backgroundElement[index]).getPropertyValue(property)
-  );
-
-
-  mapColor.set(key, backgroundColors);
-
-  return backgroundColors;
-}
 
 function changeBackgroundColor(count) {
+  let backgroundColors = "";
+  let key = count == 0 ? 1 : count == 2 ? 0 : 2;
+  const properties = propertySets[key] ;
 
   body.style.background = color[count];
-  //console.log(count);
 
-  //backgroundElement.push(...buttonboard);
-  console.log(indexSlider);
-
-
-  if (indexSlider < 3) {
-    colorElement = getColorElement(indexSlider);
-    indexSlider++;
-  }
-
-
-  if (indexSlider === 3) {
-    indexSlider = 0;
-  }
-
-
-  backgroundElement.forEach((element, index) => {
-    element.style.setProperty("background", colorElement[index]);
-    element.style.transition = '0.5s 2s ease-out';
-  });
+  properties.forEach((property, index) => {
+    backgroundColors = getComputedStyle(backgroundElement[count]).getPropertyValue(property);
+    backgroundElement[index].style.setProperty("background", backgroundColors);
+    backgroundElement[index].style.transition = '0.5s 2s ease-out';
+  })
 }
 
 
@@ -137,6 +109,7 @@ function validationNumber(number) {
 /**
  * Performs arithmetic operations based on the input string.
  */
+
 function operatioNumber() {
   const regex = /^(-?\d*\,?\d+)([-+x/])(-?\d*\,?\d+)(([-+x/]-?\d*\.?\d+)*)(=)$/;
   const rex = /^(0*(\.\d+)?\/0+(\.0+)?=|\d+(\.\d+)?\/0+(\.0+)?=)$/;
@@ -162,27 +135,6 @@ function operatioNumber() {
       footer: '<a href="#">Más información...</a>'
     });
   }
-  /** 
-  if (numbers.includes('=')) {
-    try {
-      // Replace 'x' with '*' for multiplication
-      numbers = numbers.replace(/x/g, '*').replace('=', '');
-
-      // Evaluate the mathematical expression
-      let result = eval(numbers);
-      numbers = result.toString().replace('.', ',');
-      display.innerHTML = numbers;
-
-    } catch (e) {
-      Swal.fire({
-        title: 'ADVERTENCIA',
-        text: 'Error en la expresión matemática.',
-        icon: 'warning',
-        button: 'Aceptar',
-        footer: '<a href="#">Más información...</a>'
-      });
-    }
-    **/
 }
 
 buttonDtarkSlider.addEventListener('click', () => moveslider());
