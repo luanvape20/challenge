@@ -73,12 +73,10 @@ function moveslider() {
 }
 
 
-
-
 function changeBackgroundColor(count) {
   let backgroundColors = "";
   let key = count == 0 ? 1 : count == 2 ? 0 : 2;
-  const properties = propertySets[key] ;
+  const properties = propertySets[key];
 
   body.style.background = color[count];
 
