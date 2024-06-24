@@ -31,6 +31,7 @@ const propertySets = {
     '--clr-Verydarkdesaturatedbluebutton'
   ],
   1: [
+    '--clr-Verydark',
     '--clr-white',
     '--clr-Orange',
     '--clr-whiteOpacitiy',
@@ -67,6 +68,7 @@ function moveslider() {
   changeBackgroundColor(count);
   count++;
 
+
   if (count === 3) {
     count = 0;
   }
@@ -75,16 +77,40 @@ function moveslider() {
 
 function changeBackgroundColor(count) {
   let backgroundColors = "";
-  let key = count == 0 ? 1 : count == 2 ? 0 : 2;
+  let key = (count + 1) % 3;
   const properties = propertySets[key];
-
+  const regex = /^--clr-(Verydark|Lightyellow|white)$/;
   body.style.background = color[count];
 
+  
+ // Array.from(p => p.style.setProperty(properties[p], color[count]))
+
+
+  console.log(propertySets[key].filter((x) =>{
+        let arr = regex.test(x);
+     return arr; 
+  }));
+/*
+
   properties.forEach((property, index) => {
-    backgroundColors = getComputedStyle(backgroundElement[count]).getPropertyValue(property);
-    backgroundElement[index].style.setProperty("background", backgroundColors);
-    backgroundElement[index].style.transition = '0.5s 2s ease-out';
-  })
+    /**
+     *
+     * --clr-Verydark
+     * --clr-Lightyellow
+     * --clr-white
+     *
+     * const regex = /^--clr-(Verydark|Lightyellow|white)$/;
+     * backgroundColors = getComputedStyle(backgroundElement[count]).getPropertyValue(property);
+     * 
+     * if(regex.test(property)){
+     *    backgroundElement[index].style.setProperty("color", backgroundColors);                  
+     * }
+
+       if(!regex.test(property))){
+          backgroundElement[index].style.setProperty("background", backgroundColors);
+       }
+       
+     */
 }
 
 
